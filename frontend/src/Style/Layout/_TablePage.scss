@@ -1,0 +1,387 @@
+.table-page {
+  padding: unset;
+  flex-direction: column;
+  background-color: var(--background);
+  font-family: "Roboto Condensed", sans-serif;
+
+  .page-header {
+    .page-title {
+      font-size: 2rem;
+    }
+    .btn {
+      font-size: 1.1rem;
+    }
+  }
+
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: unset;
+    margin: 0 auto 0 auto;
+    padding: 2vh 0 2vh 0;
+    width: 80%;
+    font-size: 1.4rem;
+
+    .btn,
+    .form-control {
+      font-size: 1rem;
+    }
+
+    .consent-form {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%;
+      margin: unset;
+      align-items: center;
+      flex-wrap: wrap;
+
+      > * {
+        max-width: 20%;
+        input {
+          text-transform: capitalize;
+        }
+      }
+
+      .dropdown {
+        margin-top: 1em;
+        .fields-dropdown {
+          background-color: var(--light-gray);
+          border-color: var(--gray-border);
+          width: 100%;
+        }
+        .fields-dropdown-item {
+          font-size: 1rem;
+        }
+        .dropdown-menu {
+          max-height: 400px;
+          overflow-y: auto;
+          .dropdown-item:disabled,
+          .dropdown-item.disabled {
+            color: var(--dark-text);
+          }
+      
+          .dropdown-item.disabled + .dropdown-item.disabled {
+            border-top: thin solid lightgray;
+          }
+        }
+      }
+    }
+
+    > * {
+      margin-right: 2vh;
+    }
+
+    .icon {
+      margin-right: 1vh;
+    }
+  }
+
+  .btn-secondary {
+    color: var(--primary-text);
+
+    &:hover {
+      background-color: var(--secondary-dark);
+    }
+  }
+
+  .view-requests-button,
+  .btn-outline-primary,
+  .btn-primary {
+    &:hover {
+      color: var(--primary-text);
+    }
+
+    .badge {
+      margin-left: 0.5vh;
+    }
+  }
+
+  .list-container {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding-bottom: 0.5em;
+    height: 100%;
+
+    .table-div {
+      min-width: 60%;
+      overflow-y: auto;
+
+      &.access-logs {
+        min-width: 80%;
+      }
+
+      .table {
+        .table-headers {
+          & > * {
+            border-top: unset;
+            border-bottom: unset;
+          }
+
+          color: var(--secondary);
+          border-bottom: 2px solid var(--primary) !important;
+        }
+
+        .table-row {
+          & > * {
+            border-bottom: 0.1vh solid lightgray;
+            border-top: 0;
+          }
+
+          .icon-cell {
+            width: 10%;
+          }
+        }
+
+        .icon {
+          color: var(--secondary);
+          width: 1.5rem;
+          height: 1.5rem;
+
+          &.danger {
+            color: var(--danger);
+          }
+
+          &.check {
+            color: var(--secondary-dark);
+          }
+        }
+
+        .btn {
+          padding: unset;
+          background-color: transparent;
+          border: transparent;
+        }
+
+        .export-field-button,
+        .edit-button {
+          &:hover :not([disabled]) {
+            .icon {
+              color: var(--secondary-dark);
+            }
+          }
+        }
+
+        .delete-field-button {
+          &:hover {
+            .icon {
+              color: var(--danger-dark);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bottom-buttons {
+    display: flex;
+    padding: 2vh;
+    width: 80%;
+    margin-top: auto;
+    align-self: center;
+    justify-content: flex-end;
+    align-items: center;
+
+    .btn {
+      font-size: 1rem;
+    }
+
+    .btn + .btn {
+      margin-left: 2vh;
+    }
+
+    .icon {
+      margin-right: 1vh;
+    }
+
+    .btn-primary {
+      color: var(--primary-text);
+
+      .icon {
+        color: var(--primary-text);
+      }
+    }
+  }
+
+  .data-usage-statement {
+    margin-bottom: 1em;
+    display: flex;
+    min-width: 60%;
+    justify-content: space-between;
+    padding: 0 1rem;
+    align-self: center;
+    max-height: 15%;
+
+    .data-usage {
+      overflow-y: auto;
+    }
+
+    :first-child {
+      max-width: 80%;
+      margin-right: 0.8em;
+      overflow:auto;
+    }
+
+    span {
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: unset;
+      text-indent: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+    flex-direction: column;
+    overflow: scroll;
+    .page-title {
+      font-size: 1.3rem;
+    }
+
+    .toolbar {
+      font-size: 1rem;
+      padding: 1vh 2vh;
+      .btn,
+      .form-control {
+        font-size: 1rem;
+      }
+  
+      .consent-form {
+        flex-wrap: wrap;
+        .btn,
+        .form-control {
+          font-size: 1rem;
+        }
+
+        > * {
+          width: 100%;
+          max-width: unset;
+        }
+
+        .info-group {
+          width: 45%;
+        }
+
+        input {
+          text-transform: capitalize;
+          font-size: 1rem;
+        }
+
+        .dropdown {
+          margin: 0.5em 0;
+          width: 45%;
+          margin-top: 1.5em;
+          .fields-dropdown {
+            background-color: var(--light-gray);
+            border-color: var(--gray-border);
+            width: 100%;
+          }
+          .fields-dropdown-item {
+            font-size: 1rem;
+          }
+          .dropdown-menu{
+            max-height: 200px;
+          }
+        }
+      }
+    }
+
+    .list-container {
+      font-size: 1rem;
+      overflow: unset;
+      min-height: unset;
+      .table-div {
+        width: 100%;
+        table {
+          td {
+            padding: 0.3em;
+          }
+        }
+      }
+      padding-bottom: 1vh;
+    }
+
+    .access-logs {
+      .list-container {
+        align-self: unset;
+      }
+    }
+
+    .bottom-buttons {
+      .btn {
+        font-size: 1rem;
+        padding: 0.2em 0.5em;
+      }
+    }
+
+    .data-usage-statement {
+      flex-direction: column;
+      max-height: unset;
+      .data-usage {
+        overflow-y: unset;
+      }
+      :first-child {
+        max-width: 100%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1400px) {
+    .page-header {
+      .page-title {
+        font-size: 1.5rem;
+      }
+      .btn {
+        font-size: 1rem;
+      }
+    }
+  
+    .page-title {
+      font-size: 1.5rem;
+    }
+    .toolbar {
+      width: 100%;
+      padding: 1vh;
+
+      .consent-form {
+        justify-content: space-around;
+
+        > * {
+          font-size: 1rem;
+        }
+        .dropdown {
+          .dropdown-menu {
+            max-height: 350px;
+          }
+        }
+      }
+    }
+
+    .list-container {
+      .table-div {
+        min-width: 90%;
+        margin: 0 1em;
+      }
+    }
+
+    .bottom-buttons {
+      width: 90%;
+    }
+    .data-usage-statement {
+      max-width: 90%;
+      min-width: 60%;
+      span {
+        font-size: 0.9rem;
+      }
+      p {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Unique_Boundary_name",
+        "type": "Boundary",
+        "sourceType": "HandDrawn",
+        "area": 6.03,
+        "unit": "ha",
+        "workableArea": 6.03,
+        "unit": "ha",
+        "irrigated": true
+    },
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [10.1007960636125, 52.2881332609803],
+                [10.1061373132649, 52.2896761401095],
+                [10.1044436351069, 52.2874389138864],
+                [10.1016793453394, 52.2867108456812],
+                [10.1007960636125, 52.2881332609803]
+            ]
+        ]
+    }
+}

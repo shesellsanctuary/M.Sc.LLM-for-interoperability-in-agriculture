@@ -1,0 +1,53 @@
+Here is a Python module that converts the given JSON format to the desired schema:
+```python
+import json
+from shapely.geometry import Polygon
+
+def convert_json_to_schema(json_data):
+    features = []
+    for boundary in json_data["values"]:
+        properties = {
+            "name": boundary["name"],
+            "type": "Feldweg",
+            "source": "Rawdata",
+            "date": boundary["createdTime"]
+        }
+        coordinates = []
+        for multipolygon in boundary["multipolygons"]:
+            for ring in multipolygon["rings"]:
+                for point in ring["points"]:
+                    coordinates.append([point["lon"], point["lat"]])
+        geometry = {
+            "type": "Polygon",
+            "coordinates": [coordinates]
+        }
+        feature = {
+            "type": "Feature",
+            "properties": properties,
+            "geometry": geometry
+        }
+        features.append(feature)
+    return {
+        "type": "FeatureCollection",
+        "features": features
+    }
+
+def main():
+    with open("input.json", "r") as f:
+        json_data = json.load(f)
+    schema = convert_json_to_schema(json_data)
+    print(json.dumps(schema, indent=4))
+
+if __name__ == "__main__":
+    main()
+```
+Here's what the code does:
+
+1. It loads the JSON data from a file called `input.json`.
+2. It defines a function `convert_json_to_schema` that takes the JSON data as input and returns the converted schema.
+3. The function iterates over each boundary in the JSON data, extracts the relevant information (name, type, source, date), and creates a Shapely Polygon object from the multipolygons' rings and points.
+4. It creates a Feature object with the extracted properties and geometry, and adds it to a list of features.
+5. The function returns a FeatureCollection object with the list of features.
+6. The `main` function calls the `convert_json_to_schema` function with the loaded JSON data, and prints the converted schema in JSON format.
+
+You can run this code by saving it to a file (e.g., `converter.py`) and running it with Python: `python converter.py`. Make sure to replace `input.json` with the actual path to your input JSON file.

@@ -1,0 +1,56 @@
+```python
+import json
+
+def json_to_schema(json_data):
+    """
+    Converts JSON data to schema format.
+
+    Args:
+        json_data: JSON data in dictionary format.
+
+    Returns:
+        Schema data in dictionary format.
+    """
+
+    features = []
+    for feature in json_data['values']:
+        properties = {
+            "name": feature['name'],
+            "type": feature['type'],
+            "source": feature['source'],
+            "date": feature['date']
+        }
+
+        coordinates = []
+        for polygon in feature['multiPolygon']:
+            coordinates.append([point['coordinates'] for point in polygon])
+
+        geometry = {
+            "type": "Polygon",
+            "coordinates": coordinates
+        }
+
+        features.append({
+            "type": "Feature",
+            "properties": properties,
+            "geometry": geometry
+        })
+
+    schema_data = {
+        "type": "FeatureCollection",
+        "features": features
+    }
+
+    return schema_data
+
+if __name__ == "__main__":
+    # Load JSON data
+    with open('json_data.json', 'r') as f:
+        json_data = json.load(f)
+
+    # Convert JSON data to schema
+    schema_data = json_to_schema(json_data)
+
+    # Print schema data
+    print(json.dumps(schema_data, indent=4))
+```

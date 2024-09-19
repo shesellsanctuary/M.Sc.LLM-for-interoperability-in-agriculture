@@ -1,0 +1,158 @@
+variables:
+  # This will suppress any download for dependencies and plugins or upload messages which would clutter the console log.
+  # `showDateTime` will show the passed time in milliseconds. You need to specify `--batch-mode` to make this work.
+  MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
+  # As of Maven 3.3.0 instead of this you may define these options in `.mvn/maven.config` so the same config is used
+  # when running from the command line.
+  # `installAtEnd` and `deployAtEnd` are only effective with recent version of the corresponding plugins.
+  MAVEN_CLI_OPTS: "--batch-mode --errors --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
+
+stages:
+  - test
+  - test-visualize
+  - build-jar
+  - build-and-deploy-docker-image
+  - deploy-application
+
+maven-test:
+  image: maven:3.6.3-jdk-11-slim
+  stage: test
+  cache:
+    key: shared-maven-repo-cache
+    paths:
+      - ".m2/repository/"
+  script:
+    - mvn $MAVEN_CLI_OPTS -U org.jacoco:jacoco-maven-plugin:prepare-agent test org.jacoco:jacoco-maven-plugin:report
+    - awk -F"," '{ instructions += $4 + $5; covered += $5 } END { print covered, "/", instructions, " instructions covered"; print 100*covered/instructions, "% covered" }' target/site/jacoco/jacoco.csv
+  coverage: '/\d+.\d+ \% covered/'
+  tags:
+    - asprunner
+  artifacts:
+    when: always
+    paths:
+      - target/site/jacoco/jacoco.xml
+    reports:
+      junit:
+        - "target/surefire-reports/TEST-*.xml"
+        - "target/failsafe-reports/TEST-*.xml"
+
+frontend-test:
+  stage: test
+  image:
+    name: node:16.14.2-alpine
+  script:
+    - cd frontend
+    - npm install
+    - npm run test/coverage
+    - npm run lint
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+  tags:
+    - asprunner
+
+visualize-coverage:
+  stage: test-visualize
+  image: registry.gitlab.com/haynes/jacoco2cobertura:1.0.7
+  script:
+    # convert report from jacoco to cobertura, using relative project path
+    - python /opt/cover2cover.py target/site/jacoco/jacoco.xml $CI_PROJECT_DIR/src/main/java/ > target/site/cobertura.xml
+  dependencies:
+    - maven-test
+  tags:
+    - asprunner
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: target/site/cobertura.xml
+
+maven-build:
+  image: maven:3.6.3-jdk-11-slim
+  stage: build-jar
+  cache:
+    key: shared-maven-repo-cache
+    paths:
+      - ".m2/repository/"
+  script:
+    - mvn $MAVEN_CLI_OPTS -U -DskipTests -P with-ui package
+  tags:
+    - asprunner
+  dependencies: [ ]
+  artifacts:
+    paths:
+      - target/*.jar
+
+docker-build-master:
+  stage: build-and-deploy-docker-image
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [ "" ]
+  script:
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE
+  dependencies:
+    - maven-build
+  only:
+    - master
+  tags:
+    - asprunner
+
+
+#docker-build-develop:
+#  stage: build-and-deploy-docker-image
+#  image:
+#    name: gcr.io/kaniko-project/executor:debug
+#    entrypoint: [ "" ]
+#  script:
+#    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+#    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+#  dependencies:
+#    - maven-build
+#  only:
+#    - develop
+#  tags:
+#    - asprunner
+
+#deploy-stable:
+#  image: curlimages/curl
+#  stage: deploy-application
+#  dependencies: [ ]
+#  script:
+#    - curl -v -X POST $PORTAINER_WEBHOOK_URL$STABLE_DEPLOY_KEY
+#  only:
+#    - master
+#  tags:
+#    - asprunner
+
+#deploy-external:
+#  image: curlimages/curl
+#  stage: deploy-application
+#  dependencies: [ ]
+#  script:
+#    - curl -v -X POST $PORTAINER_WEBHOOK_URL$EXTERNAL_DEPLOY_KEY
+#  only:
+#    - master
+#  tags:
+#    - asprunner
+
+#deploy-prod:
+#  image: curlimages/curl
+#  stage: deploy-application
+#  dependencies: [ ]
+#  script:
+#    - curl -v -X POST $PORTAINER_WEBHOOK_URL$PROD_DEPLOY_KEY
+#  only:
+#    - master
+#  when: manual
+#  tags:
+#    - asprunner
+
+#deploy-develop:
+#  image: curlimages/curl
+#  stage: deploy-application
+#  dependencies: [ ]
+#  script:
+#    - curl -v -X POST $PORTAINER_WEBHOOK_URL$DEV_DEPLOY_KEY
+#  only:
+#    - develop
+#  tags:
+#    - asprunner

@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[10.132759, 52.266797], [10.136734, 52.267583], [10.137818, 52.264929], [10.133816, 52.264193], [10.132759, 52.266797]]]}, "properties": {"name": "Unique_Boundary_name", "type": "Feldweg", "source": "Rawdata", "date": "2018-07-01T21:00:11Z"}}]}

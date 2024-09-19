@@ -1,0 +1,44 @@
+Here is a Python module that converts the given JSON format to the desired schema:
+
+```python
+import json
+from geojson import Feature, FeatureCollection, LineString, Polygon, Point
+
+def convert_json_to_schema(json_file):
+    with open(json_file) as f:
+        data = json.load(f)
+
+    feature_collection = FeatureCollection()
+
+    for boundary in data['values']:
+        feature = Feature()
+        feature.properties = {
+            "name": boundary["name"],
+            "type": "Feldweg",
+            "source": "Rawdata",
+            "date": boundary["createdTime"]
+        }
+
+        multipolygons = boundary["multipolygons"][0]
+        coordinates = []
+
+        for ring in multipolygons["rings"]:
+            points = []
+            for point in ring["points"]:
+                points.append((point["lon"], point["lat"]))
+            coordinates.append(points)
+
+        feature.geometry = Polygon(coordinates)
+        feature_collection.features.append(feature)
+
+    return feature_collection
+
+if __name__ == "__main__":
+    json_file = "path_to_your_json_file.json"
+    schema = convert_json_to_schema(json_file)
+    print(schema.to_string())
+```
+
+This module reads the JSON file, iterates over each boundary, extracts the relevant information and creates a `Feature` object. The geometry of the feature is set to a `Polygon` created from the points in the "multipolygons" list. Finally, it adds the feature to a `FeatureCollection` which is then returned.
+
+The main function calls this module with the path to your JSON file as an argument and prints the resulting schema.

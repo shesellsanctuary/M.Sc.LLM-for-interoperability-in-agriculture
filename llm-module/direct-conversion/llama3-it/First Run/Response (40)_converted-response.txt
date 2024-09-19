@@ -1,0 +1,26 @@
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Unique_Boundary_name",
+        "sourceType": "HandDrawn",
+        "createdTime": "2018-07-01T21:00:11Z",
+        "modifiedTime": "2017-11-16T15:43:27.496Z",
+        "area": 4.758,
+        "workableArea": 4.758,
+        "irrigated": true,
+        "archived": false,
+        "signalType": "dtiSignalTypeRTK"
+    },
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [10.116449, 52.274971],
+                [10.120403, 52.274785],
+                [10.120713, 52.273449],
+                [10.116855, 52.273116],
+                [10.116449, 52.274971]
+            ]
+        ]
+    }
+}

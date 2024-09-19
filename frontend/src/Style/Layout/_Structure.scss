@@ -1,0 +1,87 @@
+.modal {
+  .btn-primary {
+    color: var(--primary-text);
+  }
+  .btn-outline-primary:hover,
+  .btn-outline-primary:not(:disabled):not(.disabled):active{
+      color: var(--primary-text);
+  }
+}
+.page {
+  display: flex;
+  max-height: 100vh;
+  flex-direction: column;
+  overflow: hidden;
+  background-image: url('../Images/Ähren_Bühne_blurred.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  .title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-text);
+    text-align: center;
+  }
+
+  .container {
+    display: flex;
+    width: 95%;
+    height: 100vh;
+    min-height: 100%;
+    max-width: 100%;
+    margin: unset;
+    align-self: center;
+    font-size: 1rem;
+
+    .page-header {
+      display: flex;
+      border-bottom: thin solid var(--primary);
+      padding: 1.2rem;
+      align-items: center;
+  
+      .page-title {
+        color: var(--dark-text);
+        margin-right: .5rem;
+      }
+  
+      .btn-outline-primary,
+      .route-button {
+        margin-left: auto;
+        &:hover {
+          color: var(--primary-text);
+        }
+  
+        .icon {
+          width: 1.5rem;
+          height: 1.5rem;
+          align-self: center;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    body {
+      font-size: 0.8rem;
+    }
+
+    .container {
+      margin: 0;
+      box-shadow: none;
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    body {
+      font-size: 1rem;
+    }
+
+    .container {
+      margin: 0;
+      box-shadow: none;
+      font-size: 1.4rem;
+    }
+  }
+}

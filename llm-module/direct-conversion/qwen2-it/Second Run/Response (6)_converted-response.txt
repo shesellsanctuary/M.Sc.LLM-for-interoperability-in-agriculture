@@ -1,0 +1,35 @@
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Unique_Boundary_name",
+        "sourceType": "HandDrawn",
+        "createdTime": "2018-07-01T21:00:11Z",
+        "modifiedTime": "2017-11-16T15:43:27.496Z",
+        "area": {
+            "valueAsDouble": 6.014,
+            "unit": "ha"
+        },
+        "workableArea": {
+            "valueAsDouble": 6.014,
+            "unit": "ha"
+        },
+        "active": false,
+        "irrigated": true,
+        "archived": false,
+        "signalType": "dtiSignalTypeRTK",
+        "type": "Feldweg",
+        "source": "Rawdata",
+        "date": "2021-05-25T11:25:45Z"
+    },
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [10.1218927045043, 52.2851151130322],
+                [10.126712197803, 52.2846375538663],
+                [10.1233077438872, 52.2829892972707],
+                [10.1218927045043, 52.2851151130322]
+            ]
+        ]
+    }
+}

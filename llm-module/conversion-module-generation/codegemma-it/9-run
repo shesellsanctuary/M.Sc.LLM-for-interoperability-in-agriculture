@@ -1,0 +1,88 @@
+```python
+import json
+
+def convert_json_to_schema(json_data):
+    """
+    Converts JSON data to a schema.
+
+    Args:
+        json_data: The JSON data to convert.
+
+    Returns:
+        The schema as a dictionary.
+    """
+
+    # Load the JSON data
+    data = json.loads(json_data)
+
+    # Create the schema
+    schema = {
+        "type": "FeatureCollection",
+        "features": []
+    }
+
+    # Add the features
+    for feature in data["values"]:
+        schema["features"].append({
+            "type": "Feature",
+            "properties": {
+                "name": feature["name"],
+                "type": feature["type"],
+                "source": feature["source"],
+                "date": feature["date"]
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [feature["coordinates"]]
+            }
+        })
+
+    # Return the schema
+    return schema
+
+if __name__ == "__main__":
+    # Load the JSON data
+    with open("json_data.json", "r") as f:
+        json_data = f.read()
+
+    # Convert the JSON data to a schema
+    schema = convert_json_to_schema(json_data)
+
+    # Print the schema
+    print(json.dumps(schema, indent=4))
+```
+
+**Usage:**
+
+1. Create a JSON file named `json_data.json` with the JSON data provided in the problem.
+2. Run the Python script.
+3. The schema will be printed to the console.
+
+**Output:**
+
+```json
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "ArablebleArea",
+                "type": "Feldweg",
+                "source": "Rawdata",
+                "date": "2021-05-25T11:25:45Z"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [10.460348, 51.120577],
+                    [10.460492, 51.120627],
+                    [10.460969, 51.120139],
+                    [10.460819, 51.120081],
+                    [10.460348, 51.120577]
+                ]]
+            }
+        }
+    ]
+}
+```

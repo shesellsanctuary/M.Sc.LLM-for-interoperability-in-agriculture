@@ -1,0 +1,19 @@
+{"type": "Feature", 
+"properties": {
+  "name": "Unique_Boundary_name", 
+  "type": "Boundary", 
+  "source": "HandDrawn", 
+  "createdTime": "2018-07-01T21:00:11Z", 
+  "modifiedTime": "2017-11-16T15:43:27.496Z", 
+  "area": {"valueAsDouble": 1.042, "unit": "ha"}, 
+  "workableArea": {"valueAsDouble": 1.042, "unit": "ha"}, 
+  "irrigated": true, 
+  "archived": false
+}, 
+"geometry": {
+  "type": "Polygon", 
+  "coordinates": [
+    [[10.1026884639173, 52.278653202714], [10.1033897225884, 52.2797960655056], [10.1035812296816, 52.2781237392059], [10.1026884639173, 52.278653202714]]
+  ]
+}
+}

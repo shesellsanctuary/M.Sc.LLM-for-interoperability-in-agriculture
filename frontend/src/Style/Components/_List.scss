@@ -1,0 +1,34 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: unset;
+  
+  .list-item {
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    .field-text {
+      font-weight: 600;
+      margin: 1vw;
+    }
+  
+    .field-description {
+      font-weight: 600;
+      font-style: bold;
+      color: var(--secondary-light);
+      margin: 1vw;
+    }
+  }
+  
+  .list-group-item {
+    overflow-wrap: break-word;
+    background-color: var(--primary-light);
+    border-top: unset;
+  }
+}

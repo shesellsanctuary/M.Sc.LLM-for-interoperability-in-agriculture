@@ -1,0 +1,51 @@
+Here is a Python module that converts the input JSON to the desired schema:
+
+```python
+import json
+from geojson import FeatureCollection, Feature, Point, Polygon
+
+def convert_json_to_schema(json_data):
+    feature_collection = FeatureCollection()
+    
+    for value in json_data["values"]:
+        feature = Feature()
+        
+        # Set properties
+        feature.properties = {
+            "name": value["name"],
+            "type": "Feldweg",
+            "source": "Rawdata",
+            "date": value["createdTime"]
+        }
+        
+        # Set geometry
+        rings = []
+        for multipolygon in value["multipolygons"]:
+            ring = []
+            for point in multipolygon["rings"][0]["points"]:
+                ring.append([point["lon"], point["lat"]])
+            rings.append(ring)
+        feature.geometry = Polygon(shell=rings[0], coordinates=rings)
+        
+        # Add feature to collection
+        feature_collection.features.append(feature)
+    
+    return feature_collection
+
+def main():
+    with open("input.json") as file:
+        json_data = json.load(file)
+    
+    schema = convert_json_to_schema(json_data)
+    
+    print(schema)
+
+if __name__ == "__main__":
+    main()
+```
+
+This module defines a function `convert_json_to_schema` that takes the input JSON data, loops through each boundary in the "values" array, and creates a new Feature object with properties and geometry. The geometry is created by extracting the points from the multipolygons and rings.
+
+The `main` function reads the input JSON file, calls the conversion function, and prints the resulting schema as GeoJSON.
+
+Note that this module assumes the input JSON file is named "input.json" and is in the same directory as the Python script. You can modify the `main` function to read from a different file or source if needed.

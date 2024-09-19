@@ -1,0 +1,142 @@
+{
+  "links": [
+    {
+      "rel": "self",
+      "uri": "https://sandboxapi.deere.com/platform/organizations/123456/boundaries"
+    }
+  ],
+  "total": 1,
+  "values": [
+    {
+      "@type": "Boundary",
+      "id": "503381_de2_202012",
+      "name": "Unique_Boundary_name",
+      "sourceType": "HandDrawn",
+      "createdTime": "2018-07-01T21:00:11Z",
+      "modifiedTime": "2017-11-16T15:43:27.496Z",
+      "area": {
+        "@type": "MeasurementAsDouble",
+        "valueAsDouble": 31.525,
+        "unit": "ha"
+      },
+      "workableArea": {
+        "@type": "MeasurementAsDouble",
+        "valueAsDouble": 31.525,
+        "unit": "ha"
+      },
+      "multipolygons": [
+        {
+          "@type": "Polygon",
+          "rings": [
+            {
+              "@type": "Ring",
+              "points": [
+                {
+                  "@type": "Point",
+                  "lat": 52.2661029956008,
+                  "lon": 10.0948444214251
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2663660402568,
+                  "lon": 10.0968869117954
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2647891546924,
+                  "lon": 10.0972036404613
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2662671337835,
+                  "lon": 10.0973168552046
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2670629952162,
+                  "lon": 10.0998487795024
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2690532329898,
+                  "lon": 10.0987568030199
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2684937282998,
+                  "lon": 10.1022412242525
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2623845701482,
+                  "lon": 10.1022105373823
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2615052636675,
+                  "lon": 10.0978233577508
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2636237800291,
+                  "lon": 10.097440895296
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2615508657489,
+                  "lon": 10.0976892155827
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2613496988389,
+                  "lon": 10.0955470775
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2661029956008,
+                  "lon": 10.0948444214251
+                }
+              ],
+              "type": "exterior",
+              "passable": true
+            }
+          ]
+        }
+      ],
+      "extent": {
+        "@type": "Extent",
+        "topLeft": {
+          "@type": "Point",
+          "lat": 52.2661029956008,
+          "lon": 10.0948444214251
+        },
+        "bottomRight": {
+          "@type": "Point",
+          "lat": 52.2661029956008,
+          "lon": 10.0948444214251
+        }
+      },
+      "links": [
+        {
+          "@type": "Link",
+          "rel": "self",
+          "uri": "https://sandboxapi.deere.com/platform/organizations/123456/fields/503381_de2_202012/boundaries/503381_de2_202012"
+        },
+        {
+          "@type": "Link",
+          "rel": "owningOrganization",
+          "uri": "https://sandboxapi.deere.com/platform/organizations/123456"
+        },
+        {
+          "@type": "Link",
+          "rel": "field",
+          "uri": "https://sandboxapi.deere.com/platform/organizations/123456/fields/503381_de2_202012"
+        }
+      ],
+      "active": false,
+      "irrigated": true,
+      "archived": false,
+      "signalType": "dtiSignalTypeRTK"
+    }
+  ]
+}

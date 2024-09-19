@@ -1,0 +1,40 @@
+.pagination {
+  max-width: 80%;
+  padding: .5rem;
+  margin: 0 auto;
+  margin-top: auto;
+
+  .pagination-list {
+    flex-direction: row;
+    overflow-x: auto;
+
+    .page-item {
+      border: unset;
+      padding: unset;
+
+    }
+    .page-link {
+      &:hover {
+        background-color: rgba(243, 146, 0, 0.624);
+        color: var(--primary-text);
+      }
+    }
+  }
+
+  .dropdown {
+    .dropdown-toggle {
+      &:active {
+        color: var(--primary-text);
+      }
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+    width: 100%;
+    max-width: unset;
+    
+  .pagination-list {
+    flex-wrap: wrap;
+  }
+  }
+}

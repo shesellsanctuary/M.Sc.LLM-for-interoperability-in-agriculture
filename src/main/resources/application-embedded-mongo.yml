@@ -1,0 +1,5 @@
+spring:
+  mongodb:
+    embedded:
+      storage:
+        database-dir: ads-platform-data

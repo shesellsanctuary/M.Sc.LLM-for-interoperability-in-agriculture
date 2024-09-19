@@ -1,0 +1,68 @@
+Here is a Python module that converts the given JSON format to the target schema:
+
+```Python
+import json
+from shapely.geometry import Polygon
+from typing import List, Dict, Any
+
+def convert_json_to_schema(json_data: str) -> Dict[str, Any]:
+    data = json.loads(json_data)
+    features = []
+
+    for boundary in data["values"]:
+        properties = {
+            "name": boundary["name"],
+            "type": "Feldweg",
+            "source": "Rawdata",
+            "date": boundary["createdTime"]
+        }
+
+        multipolygons = [mp["rings"][0] for mp in boundary["multipolygons"]]
+
+        coordinates: List[List[float]] = []
+        for ring in multipolygons:
+            ring_coordinates = []
+            for point in ring:
+                ring_coordinates.append([point["lon"], point["lat"]])
+            coordinates.append(ring_coordinates)
+
+        geometry = {
+            "type": "Polygon",
+            "coordinates": [coordinates]
+        }
+
+        features.append({
+            "type": "Feature",
+            "properties": properties,
+            "geometry": geometry
+        })
+
+    schema = {
+        "type": "FeatureCollection",
+        "features": features
+    }
+
+    return schema
+
+def main():
+    json_data = """{
+    "links": [...],
+    "total": 1,
+    "values": [...]
+}"""
+    result = convert_json_to_schema(json_data)
+    print(result)
+
+if __name__ == "__main__":
+    main()
+```
+
+This module defines a function `convert_json_to_schema` that takes the input JSON data as a string, parses it, and converts it to the target schema. The conversion involves:
+
+1. Iterating over each boundary in the input data.
+2. Creating a dictionary for the feature's properties based on the boundary's name, type, source, and date.
+3. Extracting the coordinates from the multipolygons and creating a list of rings (each ring is a list of points).
+4. Building the geometry object with the type "Polygon" and the coordinates.
+5. Creating a dictionary for the feature and adding it to the list of features.
+
+The `main` function demonstrates how to use this module by converting the given JSON data to the target schema.

@@ -1,0 +1,21 @@
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Unique_Boundary_name",
+        "type": "HandDrawn",
+        "source": "Deere",
+        "date": "2018-07-01T21:00:11Z"
+    },
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [10.143917, 52.278999],
+                [10.147387, 52.279706],
+                [10.147947, 52.278564],
+                [10.144133, 52.277886],
+                [10.143917, 52.278999]
+            ]
+        ]
+    }
+}

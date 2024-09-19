@@ -1,0 +1,72 @@
+```python
+import json
+
+def convert_json_to_schema(json_data):
+    """
+    Converts JSON data to schema.
+
+    Args:
+        json_data: JSON data to convert.
+
+    Returns:
+        Schema data.
+    """
+
+    # Load JSON data
+    data = json.loads(json_data)
+
+    # Create schema data
+    schema_data = {
+        "type": "FeatureCollection",
+        "features": []
+    }
+
+    # Iterate over values in data
+    for value in data["values"]:
+        # Create feature data
+        feature_data = {
+            "type": "Feature",
+            "properties": {
+                "name": value["name"],
+                "type": value["type"],
+                "source": value["source"],
+                "date": value["date"]
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [value["coordinates"]]
+            }
+        }
+
+        # Add feature data to schema data
+        schema_data["features"].append(feature_data)
+
+    # Return schema data
+    return json.dumps(schema_data)
+
+if __name__ == "__main__":
+    # Example JSON data
+    json_data = json.dumps({
+        "values": [
+            {
+                "name": "ArablebleArea",
+                "type": "Feldweg",
+                "source": "Rawdata",
+                "date": "2021-05-25T11:25:45Z",
+                "coordinates": [
+                    [10.460348, 51.120577],
+                    [10.460492, 51.120627],
+                    [10.460969, 51.120139],
+                    [10.460819, 51.120081],
+                    [10.460348, 51.120577]
+                ]
+            }
+        ]
+    })
+
+    # Convert JSON data to schema
+    schema_data = convert_json_to_schema(json_data)
+
+    # Print schema data
+    print(schema_data)
+```

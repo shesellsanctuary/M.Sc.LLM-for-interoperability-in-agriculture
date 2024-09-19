@@ -1,0 +1,3 @@
+
+```
+Return the complete and valid GEOJSON translated version of the third-party company field data to the fmis format with little to no explanation. 

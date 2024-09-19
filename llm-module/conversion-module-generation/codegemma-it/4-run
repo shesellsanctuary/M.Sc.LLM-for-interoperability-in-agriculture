@@ -1,0 +1,81 @@
+```python
+import json
+
+def convert_json(json_data):
+    """
+    Converts JSON data to a GeoJSON FeatureCollection object.
+
+    Args:
+        json_data: JSON data to convert.
+
+    Returns:
+        GeoJSON FeatureCollection object.
+    """
+
+    # Parse JSON data
+    data = json.loads(json_data)
+
+    # Create FeatureCollection object
+    feature_collection = {
+        "type": "FeatureCollection",
+        "features": []
+    }
+
+    # Iterate over boundaries in JSON data
+    for boundary in data["values"]:
+        # Create Feature object
+        feature = {
+            "type": "Feature",
+            "properties": {
+                "name": boundary["name"],
+                "type": boundary["type"],
+                "source": boundary["source"],
+                "date": boundary["date"]
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [boundary["topLeft"]["lon"], boundary["topLeft"]["lat"]],
+                        [boundary["bottomRight"]["lon"], boundary["bottomRight"]["lat"]],
+                        [boundary["bottomRight"]["lon"], boundary["topLeft"]["lat"]],
+                        [boundary["topLeft"]["lon"], boundary["topLeft"]["lat"]]
+                    ]
+                ]
+            }
+        }
+
+        # Add Feature to FeatureCollection
+        feature_collection["features"].append(feature)
+
+    return json.dumps(feature_collection)
+
+if __name__ == "__main__":
+    # Example JSON data
+    json_data = """
+    {
+        "values": [
+            {
+                "name": "ArablebleArea",
+                "type": "Feldweg",
+                "source": "Rawdata",
+                "date": "2021-05-25T11:25:45Z",
+                "topLeft": {
+                    "lat": 51.120577,
+                    "lon": 10.460348
+                },
+                "bottomRight": {
+                    "lat": 51.120627,
+                    "lon": 10.460492
+                }
+            }
+        ]
+    }
+    """
+
+    # Convert JSON data to GeoJSON FeatureCollection object
+    feature_collection = convert_json(json_data)
+
+    # Print GeoJSON FeatureCollection object
+    print(feature_collection)
+```

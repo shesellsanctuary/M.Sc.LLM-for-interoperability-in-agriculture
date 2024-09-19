@@ -1,0 +1,73 @@
+Here is the Python module that converts the JSON format to the desired schema:
+```python
+import json
+from shapely.geometry import Polygon
+
+def convert_json_to_schema(json_data):
+    # Load the JSON data into a dictionary
+    data = json.loads(json_data)
+
+    # Create an empty FeatureCollection
+    feature_collection = {
+        "type": "FeatureCollection",
+        "features": []
+    }
+
+    for boundary in data["values"]:
+        # Extract relevant properties from the boundary object
+        name = boundary["name"]
+        type_ = "Feldweg"  # Assuming all boundaries are of this type
+        source = "Rawdata"
+        date = boundary["createdTime"]
+
+        # Create a Feature object
+        feature = {
+            "type": "Feature",
+            "properties": {
+                "name": name,
+                "type": type_,
+                "source": source,
+                "date": date
+            }
+        }
+
+        # Extract the polygon coordinates from the multipolygons list
+        multipolygons = boundary["multipolygons"][0]
+        rings = multipolygons["rings"][0]
+        points = rings["points"]
+        coordinates = [[point["lon"], point["lat"]] for point in points]
+
+        # Create a Polygon object using Shapely library
+        polygon = Polygon(coordinates)
+
+        # Add the geometry to the Feature object
+        feature["geometry"] = {
+            "type": "Polygon",
+            "coordinates": [list(polygon.exterior.coords)]
+        }
+
+        # Add the Feature to the FeatureCollection
+        feature_collection["features"].append(feature)
+
+    return json.dumps(feature_collection, indent=4)
+
+
+def main():
+    # Load the JSON data from a file or any other source
+    with open("input.json") as f:
+        json_data = f.read()
+
+    # Convert the JSON data to the desired schema
+    output_schema = convert_json_to_schema(json_data)
+
+    print(output_schema)
+
+
+if __name__ == "__main__":
+    main()
+```
+This module assumes that the input JSON data is stored in a file named "input.json". You can modify the `main` function to load the JSON data from any other source or format.
+
+The `convert_json_to_schema` function takes the JSON data as input, extracts relevant information, and creates a new FeatureCollection object with Features containing the desired schema. The function uses the Shapely library to create a Polygon object from the multipolygons coordinates.
+
+Note that this implementation assumes that there is only one boundary in the input JSON data. If you need to handle multiple boundaries, you will need to modify the code accordingly.

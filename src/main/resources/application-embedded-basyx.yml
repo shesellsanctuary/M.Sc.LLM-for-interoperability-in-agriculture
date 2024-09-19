@@ -1,0 +1,4 @@
+ads-platform:
+  basyx:
+    registry-url: http://localhost:4000
+    aas-server-url: http://localhost:4001

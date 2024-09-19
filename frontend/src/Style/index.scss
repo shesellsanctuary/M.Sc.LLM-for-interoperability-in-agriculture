@@ -1,0 +1,40 @@
+// change the theme
+$theme-colors: (
+  "primary": #F39100,
+  "primary-light": #FFEACB,
+  "primary-dark": #af6a02,
+  "primary-text": #ffffff,
+  "dark-text": #212121,
+  "secondary": #ACBF4C,
+  "secondary-dark": #7a8836,
+  "danger": #BA2D0B,
+  "danger-dark": #692211,
+  "success": #439775,
+  "background": #ffffff,
+  "light-gray": #e9ecef,
+  "gray-border": #ced4da
+);
+
+// Import Bootstrap and its default variables
+@import "~bootstrap/scss/bootstrap.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import '~react-toastify/dist/ReactToastify.css';
+
+/** Classes for the displayed toast **/
+.Toastify__toast--info {
+  background: var(--primary-light) !important;
+  color: var(--primary-text) !important;
+}
+
+.Toastify__toast--success {
+  background: var(--success) !important;
+}
+
+.Toastify__toast--error {
+  background: var(--danger) !important;
+}
+
+@import "Layout/Layout-index";
+@import "Components/Components-index";

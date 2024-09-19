@@ -1,0 +1,24 @@
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Unique_Boundary_name",
+        "area": 4.525,
+        "workableArea": 4.525,
+        "irrigated": true,
+        "archived": false,
+        "signalType": "dtiSignalTypeRTK"
+    },
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [10.107595, 52.268523],
+                [10.109910, 52.268520],
+                [10.110215, 52.266076],
+                [10.109119, 52.267100],
+                [10.107846, 52.266116],
+                [10.107595, 52.268523]
+            ]
+        ]
+    }
+}

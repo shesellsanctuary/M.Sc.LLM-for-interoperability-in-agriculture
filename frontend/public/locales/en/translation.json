@@ -1,0 +1,135 @@
+{
+  "login": {
+    "button": "Login",
+    "text": "Data hub for digital field twins"
+  },
+  "header": {
+    "twins": "Fields",
+    "consents": "Consents",
+    "accessLogs": "Access Logs"
+  },
+  "dashboard": {
+    "manageTwins": {
+      "title": "Manage Fields",
+      "description": "Create, Delete, Export or Import Field Twins"
+    },
+    "manageConsents": {
+      "title": "Manage Consents",
+      "description": "Manage your Data Access Consents"
+    },
+    "viewAccessLogs": {
+      "title": "View Access Logs",
+      "description": "Inspect the Data Access Logs"
+    }
+  },
+  "back": "back",
+  "yes": "yes",
+  "no": "no",
+  "searchPlaceholder": "Search",
+  "confirmationModalConfirm": "Confirm",
+  "confirmationModalClose": "Close",
+  "noDataMessage": "No Data",
+  "createdAt": "Created At",
+  "fieldsAdministration": {
+    "pageTitle": "Fields Administration",
+    "newFieldButton": "New Field",
+    "fieldTableHeader": "Field",
+    "exportAllButton": "Export All",
+    "importFieldButton": "Import Field",
+    "deleteAllButton": "Delete All",
+    "newFieldInvalidFeedback": "Please provide a field name.",
+    "newFieldFormNameLabel": "Field Name",
+    "deleteField": "Delete Field",
+    "deleteFieldConfirmationQuestion": "Do you really want to delete field: ",
+    "deletedSuccessfullyToast": "Successfully deleted",
+    "failureToDeleteToast": "Unable to delete",
+    "createdSuccessfullyToast": "Created successfully",
+    "failureToCreateToast": "Unable to create"
+  },
+  "consents": {
+    "pageTitle": "Consents",
+    "viewRequestsButton": "View Consent Requests",
+    "newConsentButton": "New Consent",
+    "client": "Client",
+    "user": "User",
+    "startTime": "Start Date",
+    "endTime": "Expiry Date",
+    "noDate": "No date",
+    "permissionLevel": "Permission Level",
+    "permissionLevels": {
+      "fullAccess": "Full control",
+      "morePrivileged": "Limited read and write",
+      "readOnly": "Read only"
+    },
+    "state": {
+      "state": "State",
+      "active": "Active",
+      "revoked": "Revoked"
+    },
+    "admin": {
+      "pageTitle": "Consent Administration",
+      "relatedFields": "Related Fields",
+      "timeRange": "Time Range",
+      "from": "From",
+      "to": "To",
+      "data": "Data",
+      "read": "Read",
+      "create": "Create",
+      "update": "Update",
+      "delete": "Delete",
+      "revokeConsent": "Revoke Consent",
+      "revokeConsentConfirmationQuestion":  "Do you really want to revoke this consent?",
+      "revokedSuccessfullyToast": "Consent revoked successfully",
+      "failureToRevokeToast":  "Unable to revoke consent",
+      "dataUsageStatement": "Data usage statement",
+      "additionalNotes": "Additional notes",
+      "twinResources": {
+        "TRACKS": "Tracks",
+        "ARABLE_AREA": "Arable area",
+        "TRAFFICABLE_AREA": "Trafficable area",
+        "NON_TRAFFICABLE_AREA": "Non-trafficable area",
+        "WORK_RECORDS_FERTILIZATION": "Work records fertilization",
+        "WORK_RECORDS_WEED_CONTROL": "Work records weed control",
+        "WORK_RECORDS_SEEDING": "Work records seeding",
+        "WORK_RECORDS_HARVESTING": "Work records harvesting",
+        "RECOMMENDATIONS": "Recommendations",
+        "WORK_TIME_ESTIMATES": "Work time estimates",
+        "CROP_MATURITY_FORECASTS": "Crop maturity forecasts",
+        "CROP_MATURITY_OBSERVATIONS": "Crop maturity observations",
+        "SOIL_COMPOSITION_OBSERVATIONS": "Soil composition observations",
+        "SOIL_NUTRIENTS_OBSERVATIONS": "Soil nutrients observations",
+        "VEGETATION_INDEX_OBSERVATIONS": "Vegetation index observations",
+        "NITROGEN_OUTGASSING_OBSERVATIONS": "Nitrogen outgassing observations",
+        "DATA_FILES": "Data files",
+        "PLANT_OBSERVATIONS": "Plant observations"
+      },
+      "failureToRetrieveDataReloadPage": "Failure to retrieve data. Please try reloading the page.",
+      "noCurrentRelatedFields": "No current related fields"
+    },
+    "requests": {
+      "pageTitle": "Consent Requests"
+    },
+    "requestsAdmin": {
+      "pageTitle": "Consent Request Administration",
+      "selectFieldsLabel": "Select fields",
+      "allFieldsLabel": "All fields",
+      "acceptRequest": "Accept request",
+      "declineRequest": "Decline request",
+      "requestsFullAccessLabel": "Requests full access",
+      "answeredSuccessfullyToast": "Decision processed successfully",
+      "failureToAnswerToast": "Decision could not be processed"
+    }
+  },
+  "accessLogs": {
+    "pageTitle": "Access Logs",
+    "date": "Date",
+    "accessedBy": "Accessed By",
+    "field": "Field",
+    "action": "Action",
+    "data": "Data"
+  },
+  "userDropdown": {
+    "manageAccount": "Manage account",
+    "loggout": "Log out"
+  }
+}

@@ -1,0 +1,87 @@
+Here is the Python module that can convert the given JSON format to the desired schema:
+
+```python
+import json
+from shapely.geometry import Polygon
+
+def convert_json_to_schema(json_input):
+    # Load the input JSON data
+    data = json.loads(json_input)
+
+    # Create a list to store the converted features
+    features = []
+
+    for boundary in data["values"]:
+        # Extract the necessary information from the boundary
+        name = boundary["name"]
+        source = "Rawdata"
+        date = boundary["createdTime"]
+
+        # Convert the multipolygons to Shapely Polygons
+        polygons = []
+        for multipolygon in boundary["multipolygons"]:
+            polygon_points = [(point["lon"], point["lat"]) for point in multipolygon["rings"][0]["points"]]
+            polygon = Polygon(polygon_points)
+            polygons.append([list(p) for p in list(polygon.exterior.coords)])
+
+        # Create the feature dictionary
+        feature = {
+            "type": "Feature",
+            "properties": {
+                "name": name,
+                "type": "Feldweg",
+                "source": source,
+                "date": date
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": polygons
+            }
+        }
+
+        # Add the feature to the list of features
+        features.append(feature)
+
+    # Create the FeatureCollection dictionary
+    feature_collection = {
+        "type": "FeatureCollection",
+        "features": features
+    }
+
+    return json.dumps(feature_collection)
+
+
+# Example usage:
+json_input = """
+{
+    "links": [...],
+    "total": 1,
+    "values": [
+      {
+        "@type": "Boundary",
+        "id": "519dcf9a-9931-4789-9eaa-3dc7399f2840",
+        "name": "Unique_Boundary_name",
+        "sourceType": "HandDrawn",
+        "createdTime": "2018-07-01T21:00:11Z",
+        "modifiedTime": "2017-11-16T15:43:27.496Z",
+        "area": {...},
+        "workableArea": {...},
+        "multipolygons": [...],
+        "extent": {...},
+        "links": [...],
+        "active": false,
+        "irrigated": true,
+        "archived": false,
+        "signalType": "dtiSignalTypeRTK"
+      }
+    ]
+}
+"""
+
+main_feature_collection = convert_json_to_schema(json_input)
+print(main_feature_collection)
+```
+
+This module uses the `shapely` library to convert the multipolygons in the input JSON data to Shapely Polygons, which can then be converted to the desired schema. The resulting FeatureCollection is returned as a JSON string.
+
+Note that you'll need to install the `shapely` library if it's not already installed, using `pip install shapely`.

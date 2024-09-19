@@ -1,0 +1,78 @@
+```python
+import json
+
+def convert_json_to_schema(json_data):
+    """
+    Converts a JSON object to a GeoJSON FeatureCollection.
+
+    Args:
+        json_data: A JSON object.
+
+    Returns:
+        A GeoJSON FeatureCollection object.
+    """
+
+    # Get the first value from the 'values' key.
+    first_value = json_data['values'][0]
+
+    # Create a GeoJSON Feature object.
+    feature = {
+        'type': 'Feature',
+        'properties': {
+            'name': first_value['name'],
+            'type': first_value['type'],
+            'source': first_value['source'],
+            'date': first_value['date']
+        },
+        'geometry': {
+            'type': 'Polygon',
+            'coordinates': [
+                [
+                    [first_value['extent']['topLeft']['lon'], first_value['extent']['topLeft']['lat']],
+                    [first_value['extent']['bottomRight']['lon'], first_value['extent']['bottomRight']['lat']],
+                    [first_value['extent']['bottomRight']['lon'], first_value['extent']['topLeft']['lat']],
+                    [first_value['extent']['topLeft']['lon'], first_value['extent']['topLeft']['lat']]
+                ]
+            ]
+        }
+    }
+
+    # Create a GeoJSON FeatureCollection object.
+    feature_collection = {
+        'type': 'FeatureCollection',
+        'features': [feature]
+    }
+
+    return feature_collection
+
+if __name__ == '__main__':
+    # Load the JSON data.
+    with open('json_data.json', 'r') as f:
+        json_data = json.load(f)
+
+    # Convert the JSON data to a GeoJSON FeatureCollection.
+    feature_collection = convert_json_to_schema(json_data)
+
+    # Print the GeoJSON FeatureCollection.
+    print(json.dumps(feature_collection, indent=4))
+```
+
+**Usage:**
+
+1. Save the code in a file named `json_to_geojson.py`.
+2. Run the script with the following command:
+
+```
+python json_to_geojson.py
+```
+
+This will print the GeoJSON FeatureCollection object to the console.
+
+**Note:**
+
+* The input JSON data should be in the format specified in the problem.
+* The output GeoJSON FeatureCollection object will have the same structure as the input JSON data, but with the following changes:
+    * The `type` property will be set to `FeatureCollection`.
+    * The `features` property will be a list containing a single Feature object.
+    * The `geometry` property will be set to a Polygon object.
+    * The `coordinates` property of the Polygon object will be set to the coordinates of the extent of the boundary.

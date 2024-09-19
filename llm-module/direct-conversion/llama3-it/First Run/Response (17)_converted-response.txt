@@ -1,0 +1,26 @@
+{ "type": "Feature", 
+   "properties": { 
+      "name": "Unique_Boundary_name",
+      "sourceType": "HandDrawn",
+      "area": 13.387,
+      "workableArea": 13.387,
+      "createdTime": "2018-07-01T21:00:11Z",
+      "modifiedTime": "2017-11-16T15:43:27.496Z"
+   }, 
+   "geometry": { 
+      "type": "Polygon", 
+      "coordinates": [ 
+         [
+            [
+             10.134149, 52.276521,
+             10.141772, 52.277608,
+             10.142086, 52.275152,
+             10.139368, 52.274691,
+             10.138960, 52.276343,
+             10.136250, 52.274643,
+             10.134149, 52.274272
+            ]
+         ]
+      ]
+   }
+}

@@ -1,0 +1,133 @@
+{
+  "login": {
+    "button": "Anmelden",
+    "text": "Datenhub für digitale Feldzwillinge"
+  },
+  "header": {
+    "twins": "Ackerschläge",
+    "consents": "Zugriffsrechte",
+    "accessLogs": "Zugriffsprotokolle"
+  },
+  "dashboard": {
+    "manageTwins": {
+      "title": "Ackerschläge verwalten",
+      "description": "Digitale Zwillinge erstellen, löschen, exportieren oder importieren"
+    },
+    "manageConsents": {
+      "title": "Zugriffsrechte verwalten",
+      "description": "Zugriffsrechte die Digitale Zwillinge verwalten"
+    },
+    "viewAccessLogs": {
+      "title": "Zugriffsprotokolle",
+      "description": "Zugriffsprotokolle kontrollieren"
+    }
+  },
+  "back": "zurück",
+  "yes": "ja",
+  "no": "nein",
+  "searchPlaceholder": "Suchen",
+  "confirmationModalConfirm": "Bestätigen",
+  "confirmationModalClose": "Schließen",
+  "noDataMessage": "Keine Daten",
+  "createdAt": "Erstellt am",
+  "fieldsAdministration": {
+    "pageTitle": "Verwaltung Ackerschläge",
+    "newFieldButton": "Neues Feld",
+    "fieldTableHeader": "Feld",
+    "exportAllButton": "Alle exportieren",
+    "importFieldButton": "Feld importieren",
+    "deleteAllButton": "Alle löschen",
+    "newFieldInvalidFeedback": "Bitte geben Sie einen Namen für das Feld ein.",
+    "newFieldFormNameLabel": "Neuer Feldname",
+    "deleteField": "Feld Löschen",
+    "deleteFieldConfirmationQuestion": "Möchten Sie das folgende Feld wirklich löschen: ",
+    "deletedSuccessfullyToast": "Erfolgreich gelöscht",
+    "failureToDeleteFieldToast": "Feld kann nicht gelöscht werden"
+  },
+  "consents": {
+    "pageTitle": "Zugriffsrechte",
+    "viewRequestsButton": "Berechtigungsanfragen ansehen",
+    "newConsentButton": "Neue Berechtigung",
+    "client": "System",
+    "user": "Nutzer",
+    "startTime": "Startdatum",
+    "endTime": "Ablaufdatum",
+    "noDate": "Kein Datum",
+    "permissionLevel": "Berechtigungsstufe",
+    "permissionLevels": {
+      "fullAccess": "Vollzugriff",
+      "morePrivileged": "Eingeschränktes Lesen und Schreiben",
+      "readOnly": "Lesen"
+    },
+    "state": {
+      "state": "Zustand",
+      "active": "Aktiv",
+      "revoked": "Widerrufen"
+    },
+    "admin": {
+      "pageTitle": "Verwaltung Zugriffsrechte",
+      "relatedFields": "Zugehörige Felder",
+      "timeRange": "Zeitspanne",
+      "from": "Von",
+      "to": "Bis",
+      "data": "Daten",
+      "read": "Lesen",
+      "create": "Erstellen",
+      "update": "Aktualisieren",
+      "delete": "Löschen",
+      "revokeConsent": "Einwilligung widerrufen",
+      "revokeConsentConfirmationQuestion":  "Möchten Sie diese Einwilligung wirklich widerrufen?",
+      "revokedSuccessfullyToast": "Erfolgreich widerrufen",
+      "failureToRevokeToast":  "Einwilligung konnte nicht widerrufen werden",
+      "dataUsageStatement": "Erklärung zur Datennutzung",
+      "additionalNotes": "Zusätzliche Anmerkungen",
+      "twinResources": {
+        "TRACKS": "Spuren",
+        "ARABLE_AREA": "Feldgrenzen",
+        "TRAFFICABLE_AREA": "Befahrbare Flächen",
+        "NON_TRAFFICABLE_AREA": "Nichtbefahrbare Flächen",
+        "WORK_RECORDS_FERTILIZATION": "Arbeitsberichte Düngung",
+        "WORK_RECORDS_WEED_CONTROL": "Arbeitsberichte Unkrautbekämpfung",
+        "WORK_RECORDS_SEEDING": "Arbeitsberichte Aussaat",
+        "WORK_RECORDS_HARVESTING": "Arbeitsberichte Ernte",
+        "WORK_TIME_ESTIMATES": "Arbeitszeitschätzungen",
+        "CROP_MATURITY_FORECASTS": "Reifeprognosen",
+        "CROP_MATURITY_OBSERVATIONS": "Aufzeichnungen Reife",
+        "RECOMMENDATIONS": "Empfehlungen",
+        "SOIL_COMPOSITION_OBSERVATIONS": "Aufzeichnungen Bodenzusammensetzung",
+        "SOIL_NUTRIENTS_OBSERVATIONS": "Aufzeichnungen Bodennährstoffe",
+        "VEGETATION_INDEX_OBSERVATIONS": "Aufzeichnungen Vegetationsindex",
+        "NITROGEN_OUTGASSING_OBSERVATIONS": "Aufzeichnungen Stickstoffausgasung",
+        "DATA_FILES": "Dateien",
+        "PLANT_OBSERVATIONS": "Aufzeichnungen Pflanzenbestand"
+      },
+      "failureToRetrieveDataReloadPage": "Fehler beim Abrufen von Daten. Bitte versuchen Sie, die Seite neu zu laden.",
+      "noCurrentRelatedFields": "Keine aktuellen verwandten Felder."
+    },
+    "requests": {
+      "pageTitle": "Berechtigungsanfragen"
+    },
+    "requestsAdmin": {
+      "pageTitle": "Verwaltung Berechtigungsanfrage",
+      "selectFieldsLabel": "Felder wählen",
+      "allFieldsLabel": "Alle Felder",
+      "acceptRequest": "Berechtigung erteilen",
+      "declineRequest": "Berechtigung verweigern",
+      "requestsFullAccessLabel": "Beantragt Vollzugriff",
+      "answeredSuccessfullyToast": "Entscheidung erfolgreich verarbeitet",
+      "failureToAnswerToast": "Entscheidung konnte nicht verarbeitet werden"
+    }
+  },
+  "accessLogs": {
+    "pageTitle": "Zugriffsprotokolle",
+    "date": "Datum",
+    "accessedBy": "Zugriff durch",
+    "field": "Ackerschlag",
+    "action": "Aktion",
+    "data": "Daten"
+  },
+  "userDropdown": {
+    "manageAccount": "Konto verwalten",
+    "loggout": "Abmelden"
+  }
+}

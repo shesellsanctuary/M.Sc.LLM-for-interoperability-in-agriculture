@@ -1,0 +1,248 @@
+.consent-request-admin {
+  padding: unset;
+  flex-direction: column;
+  background-color: var(--background);
+  font-family: "Roboto Condensed", sans-serif;
+  overflow: auto;
+
+  .btn,.form-control, .consent-form, input {
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+      
+    .icon {
+      margin-right: .2em;
+    }
+  }
+
+  .page-header {
+    .page-title {
+      font-size: 1.3rem;
+    }
+  }
+
+  .content {
+    padding: .5em;
+    padding-bottom: 1em;
+    .consent-form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .form-row {
+        display: contents;
+        margin: unset;
+      }
+
+      .form-group {
+        margin-bottom: .7em;
+        max-width: 48%;
+      }
+
+      input {
+        text-transform: capitalize;
+      }
+    }
+  
+    .list-container {
+      font-size: .85rem;
+      overflow: unset;
+      min-height: unset;
+      border-bottom: thin solid var(--primary);
+      border-top: thin solid var(--primary);
+
+      .table-div {
+        width: 100%;
+        .table {
+          padding-bottom: .5em;
+          .table-headers {
+            & > * {
+              border-top: unset;
+              border-bottom: unset;
+            }
+  
+            color: var(--secondary);
+            border-bottom: 2px solid var(--primary) !important;
+          }
+  
+          .table-row {
+            & > * {
+              border-bottom: 0.1vh solid lightgray;
+              border-top: 0;
+            }
+          }
+  
+          td {
+            padding: 0.3em;
+          }
+  
+          .icon {
+            color: var(--secondary);
+            width: 1.5rem;
+            height: 1.5rem;
+  
+            &.danger {
+              color: var(--danger);
+            }
+  
+            &.check {
+              color: var(--secondary-dark);
+            }
+          }
+        }
+      }
+    }
+  
+    .select-fields {
+      margin-top: .5em;
+  
+      .fields-checkboxes {
+        &.show {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .field-checkbox {
+          width: 50%;
+        }
+      }
+      .additional-notes-text-area {
+        margin-top: .5em;
+      }
+      
+      .form-buttons {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: .5em;
+      }
+
+      .btn-secondary {
+        color: var(--primary-text);
+    
+        &:hover {
+          background-color: var(--secondary-dark);
+        }
+      }
+    }
+  }
+
+  .data-usage-statement {
+    margin-bottom: .5em;
+    display: flex;
+    min-width: 60%;
+    justify-content: space-between;
+    align-self: center;
+    flex-direction: column;
+    border-top: thin solid var(--primary);
+    text-transform: none;
+    .data-usage {
+      overflow-y: auto;
+    }
+    span {
+        font-size: 0.9rem;
+        color: var(--primary);
+        font-weight: bold;
+      }
+    p {
+      margin: unset;
+      font-size: 0.8rem;
+      text-indent: 1rem;
+    }
+  }
+
+  @media screen and (min-width: 950px) {
+    overflow: hidden;
+    .page-header {
+      .page-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-evenly;
+      overflow: hidden;
+      
+      .consent-form {
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        margin-top: .5em;
+        width: 25%;
+        .form-row {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+  
+      .list-container {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        padding-bottom: 0.5em;
+        min-height: 20%;
+        min-width: 25%;
+        font-size: 1rem;
+        border: unset;
+
+        .table-div {
+          min-width: 60%;
+          overflow-y: auto;
+    
+          &.access-logs {
+            min-width: 80%;
+          }
+
+        }
+      }
+      
+        .select-fields {
+          justify-content: center;
+          width: 25%;
+          border-bottom: unset;
+          .consent-request-answer-form {
+            max-height: 100%;
+            overflow: auto;
+          }
+        }
+      }
+
+      .data-usage-statement {
+        overflow: hidden;
+        border: unset;
+        .data-usage {
+          overflow: auto;
+        }
+        span {
+          font-size: 1.2rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+
+  @media screen and (min-width: 1400px) {
+    .page-header {
+      .page-title {
+        font-size: 2rem;
+      }
+    }
+
+    .btn {
+      font-size: 1.1rem;
+    }
+
+    .content{
+      .consent-form {
+        font-size: 1.4rem;
+      }
+      .list-container {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}

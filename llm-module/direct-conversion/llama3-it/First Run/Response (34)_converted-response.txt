@@ -1,0 +1,19 @@
+{"type": "Feature", 
+"properties": {
+"name": "Unique_Boundary_name",
+"type": "Boundary",
+"source": "HandDrawn",
+"date": "2018-07-01T21:00:11Z"
+}, 
+"geometry": {
+"type": "Polygon", 
+"coordinates": [
+[
+[10.121864, 52.277043],
+[10.123860, 52.277410],
+[10.124285, 52.275304],
+[10.122378, 52.275119],
+[10.121864, 52.277043]
+]
+]
+}}

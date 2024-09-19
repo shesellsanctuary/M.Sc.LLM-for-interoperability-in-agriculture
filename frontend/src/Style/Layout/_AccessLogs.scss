@@ -1,0 +1,19 @@
+.access-logs {
+  .list-container {
+    flex-direction: column;
+    min-width: 80%;
+    overflow: auto; 
+    align-self: center;
+    justify-content: unset;
+
+    .table-div {
+      overflow-y: unset;
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+      .list-container {
+        align-self: unset;
+      }
+  }
+}

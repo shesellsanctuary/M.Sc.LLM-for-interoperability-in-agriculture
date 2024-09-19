@@ -1,0 +1,137 @@
+{
+  "links": [
+    {
+      "rel": "self",
+      "uri": "https://sandboxapi.deere.com/platform/organizations/123456/boundaries"
+    }
+  ],
+  "total": 1,
+  "values": [
+    {
+      "@type": "Boundary",
+      "id": "491639_de2_202012",
+      "name": "Unique_Boundary_name",
+      "sourceType": "HandDrawn",
+      "createdTime": "2018-07-01T21:00:11Z",
+      "modifiedTime": "2017-11-16T15:43:27.496Z",
+      "area": {
+        "@type": "MeasurementAsDouble",
+        "valueAsDouble": 33.498,
+        "unit": "ha"
+      },
+      "workableArea": {
+        "@type": "MeasurementAsDouble",
+        "valueAsDouble": 33.498,
+        "unit": "ha"
+      },
+      "multipolygons": [
+        {
+          "@type": "Polygon",
+          "rings": [
+            {
+              "@type": "Ring",
+              "points": [
+                {
+                  "@type": "Point",
+                  "lat": 52.2654457047127,
+                  "lon": 10.1255431075591
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2668021513808,
+                  "lon": 10.1323532018851
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2642263877458,
+                  "lon": 10.1337566102938
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2641546563958,
+                  "lon": 10.1323324253799
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2614823860166,
+                  "lon": 10.1324638571041
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2617397678085,
+                  "lon": 10.1353442431937
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2595675141038,
+                  "lon": 10.1350616888722
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.260123351264,
+                  "lon": 10.1296213211936
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2644698683319,
+                  "lon": 10.1278721845112
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2602156137867,
+                  "lon": 10.1292921021514
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2605120756218,
+                  "lon": 10.1272093105809
+                },
+                {
+                  "@type": "Point",
+                  "lat": 52.2654457047127,
+                  "lon": 10.1255431075591
+                }
+              ],
+              "type": "exterior",
+              "passable": true
+            }
+          ]
+        }
+      ],
+      "extent": {
+        "@type": "Extent",
+        "topLeft": {
+          "@type": "Point",
+          "lat": 52.2654457047127,
+          "lon": 10.1255431075591
+        },
+        "bottomRight": {
+          "@type": "Point",
+          "lat": 52.2654457047127,
+          "lon": 10.1255431075591
+        }
+      },
+      "links": [
+        {
+          "@type": "Link",
+          "rel": "self",
+          "uri": "https://sandboxapi.deere.com/platform/organizations/123456/fields/491639_de2_202012/boundaries/491639_de2_202012"
+        },
+        {
+          "@type": "Link",
+          "rel": "owningOrganization",
+          "uri": "https://sandboxapi.deere.com/platform/organizations/123456"
+        },
+        {
+          "@type": "Link",
+          "rel": "field",
+          "uri": "https://sandboxapi.deere.com/platform/organizations/123456/fields/491639_de2_202012"
+        }
+      ],
+      "active": false,
+      "irrigated": true,
+      "archived": false,
+      "signalType": "dtiSignalTypeRTK"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+logging:
+  level:
+    de.fraunhofer.iese.cognac.ads.ads_platform: DEBUG
+
+spring:
+  data:
+    mongodb:
+      database: ads-platform
+      port: 27017
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://auth.ads-platform-intern.iese.de/auth/realms/dev.ads-platform.de
+          jwk-set-uri: http://auth.ads-platform-intern.iese.de/auth/realms/dev.ads-platform.de/protocol/openid-connect/certs
+  servlet:
+    multipart:
+      max-file-size: 1200MB
+      max-request-size: 1200MB
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      write-durations-as-timestamps: false
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: swagger
+    operations-sorter: alpha
+    tags-sorter: alpha

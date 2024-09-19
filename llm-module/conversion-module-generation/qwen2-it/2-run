@@ -1,0 +1,80 @@
+Here's the Python code that converts the provided JSON format to a GeoJSON-like schema:
+
+```python
+import json
+
+def convert_to_geojson_format(json_data):
+    # Extract the values from 'values' array in the input JSON data
+    boundaries = json_data["values"]
+    
+    # Initialize an empty list for storing FeatureCollection features
+    feature_collection = []
+    
+    for boundary in boundaries:
+        # Create a new Feature object with properties and geometry populated accordingly
+        feature_properties = {
+            "name": boundary.get("name", ""),
+            "type": "Feldweg",
+            "source": "Rawdata",
+            "date": boundary["createdTime"]
+        }
+        
+        feature_geometry = None
+        
+        if "@type" in boundary:
+            polygon_points = []
+
+            points = boundary["@type"].get("points", [])
+            
+            for point_data in points:
+                lat, lon = point_data.get("lat"), point_data.get("lon")
+                polygon_points.append((lon, lat))
+                
+            feature_geometry = {
+                "type": "Polygon",
+                "coordinates": [polygon_points]
+            }
+        
+        # Create and append a new Feature to the FeatureCollection
+        if feature_geometry:
+            feature_collection.append({
+                "type": "Feature",
+                "properties": feature_properties,
+                "geometry": feature_geometry,
+            })
+    
+    # Construct the FeatureCollection object from GeoJSON specification
+    geojson_feature_collection = {
+        "type": "FeatureCollection",
+        "features": feature_collection,
+    }
+    
+    return geojson_feature_collection
+
+# Example usage:
+input_json_data = json.loads(
+    '''
+    {
+        "values": [
+            {
+                "name": "ArablebleArea",
+                ...
+                "extent": {
+                    ...
+                    "topLeft": {"lat": 41.607420743, "lon": -93.677587509},
+                    "bottomRight": {"lat": 41.604179741, "lon": -93.676643372}
+                },
+                ...
+            }
+        ]
+    }
+    '''
+)
+
+geojson_output = convert_to_geojson_format(input_json_data)
+print(json.dumps(geojson_output, indent=2))
+```
+
+This code snippet defines a function `convert_to_geojson_format` that takes JSON data as input and returns the corresponding GeoJSON-like schema. It extracts data from the provided JSON format and reconstructs it into a FeatureCollection following the GeoJSON specification.
+
+In this example usage, we pass in the JSON data string with the expected structure and convert it to the desired output format using `convert_to_geojson_format`. The resulting GeoJSON-like schema is then printed to stdout.

@@ -1,0 +1,52 @@
+{ 
+"features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Unique_Boundary_name",
+        "sourceType": "HandDrawn",
+        "createdTime": "2018-07-01T21:00:11Z",
+        "modifiedTime": "2017-11-16T15:43:27.496Z",
+        "area": 19.874,
+        "workableArea": 19.874,
+        "irrigated": true,
+        "archived": false,
+        "signalType": "dtiSignalTypeRTK"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [10.0863729914689, 52.2642316122271],
+            [10.0934814800036, 52.2647832208802],
+            [10.0940391539472, 52.2611975106627],
+            [10.0869559229894, 52.2606955652089],
+            [10.0863729914689, 52.2642316122271]
+          ]
+        ]
+      }
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "uri": "https://sandboxapi.deere.com/platform/organizations/123456/boundaries"
+    },
+    {
+      "@type": "Link",
+      "rel": "self",
+      "uri": "https://sandboxapi.deere.com/platform/organizations/123456/fields/599732_de2_202012/boundaries/599732_de2_202012"
+    },
+    {
+      "@type": "Link",
+      "rel": "owningOrganization",
+      "uri": "https://sandboxapi.deere.com/platform/organizations/123456"
+    },
+    {
+      "@type": "Link",
+      "rel": "field",
+      "uri": "https://sandboxapi.deere.com/platform/organizations/123456/fields/599732_de2_202012"
+    }
+  ],
+  "total": 1
+}

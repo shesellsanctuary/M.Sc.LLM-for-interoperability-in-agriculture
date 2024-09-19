@@ -1,0 +1,26 @@
+{
+    "type": "Feature",
+    "properties": {
+        "name": "Unique_Boundary_name",
+        "type": "Boundary",
+        "sourceType": "HandDrawn",
+        "date": "2018-07-01T21:00:11Z"
+    },
+    "geometry": {
+        "@type": "Polygon",
+        "rings": [
+            {
+                "@type": "Ring",
+                "points": [
+                    {"@type": "Point", "lat": 52.2909779164138, "lon": 10.0885956268476},
+                    {"@type": "Point", "lat": 52.2911814432152, "lon": 10.0908934318994},
+                    {"@type": "Point", "lat": 52.2886365971548, "lon": 10.0917183527899},
+                    {"@type": "Point", "lat": 52.2885034957271, "lon": 10.0893690121517},
+                    {"@type": "Point", "lat": 52.2909779164138, "lon": 10.0885956268476}
+                ],
+                "type": "exterior",
+                "passable": true
+            }
+        ]
+    }
+}

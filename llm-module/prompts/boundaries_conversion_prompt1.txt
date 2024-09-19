@@ -1,0 +1,30 @@
+
+Here is another example of an farm management information system (FMIS) JSON data format that represents a farm field boundaries based on the GeoJSON format: 
+
+```json
+{
+        type: 'Feature',
+        properties: {
+          "name": "ArablebleArea"
+          "type": "Feldweg",
+          "source": "Rawdata",
+          "date": "2021-05-25T11:25:45Z"
+        },
+        geometry: {
+          type: 'Polygon',
+          coordinates: [
+              [
+                [10.460348, 51.120577],
+                [10.460492, 51.120627],
+                [10.460969, 51.120139],
+                [10.460819, 51.120081],
+                [10.460348, 51.120577]
+              ]
+          ]
+        }
+}
+```
+
+And here is the field boundaries JSON format of a field provided by a third party company which does not follow the GeoJSON format:
+
+```json

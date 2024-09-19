@@ -1,0 +1,81 @@
+To convert the JSON format to the desired schema, you can use the `json` and `geojson` modules in Python. Here's an example of how you could create such a module:
+```python
+import json
+from geojson import Feature, FeatureCollection, Polygon
+
+def convert_to_feature_collection(json_data):
+    data = json.loads(json_data)
+    features = []
+    
+    for boundary in data["values"]:
+        feature_properties = {
+            "name": boundary.get("name", ""),
+            "type": "Feldweg",
+            "source": "Rawdata",
+            "date": boundary.get("createdTime", "")
+        }
+        
+        geometry = create_polygon(boundary)
+        if geometry:
+            feature = Feature(
+                type="Feature",
+                properties=feature_properties,
+                geometry=geometry
+            )
+            features.append(feature)
+
+    return FeatureCollection(features)
+
+def create_polygon(boundary):
+    try:
+        outer_ring = []
+        for point in boundary["multipolygons"][0]["rings"][0]["points"]:
+            lat, lon = point.get("lat"), point.get("lon")
+            if lat is not None and lon is not None:
+                outer_ring.append((lon, lat))
+        
+        if len(outer_ring) > 1: # Check that we have at least three points to form a polygon
+            return Polygon([outer_ring])
+    except (KeyError, IndexError):
+        pass
+
+    return None
+
+# Example usage:
+
+json_data = '''
+{
+ "type": "FeatureCollection",
+ "features": [
+   {
+     "type": "Feature",
+     "properties": {
+       "name": "ArablebleArea",
+       "type": "Feldweg",
+       "source": "Rawdata",
+       "date": "2021-05-25T11:25:45Z"
+     },
+     "geometry": {
+       "type": "Polygon",
+       "coordinates": [
+         [
+           [10.460348, 51.120577],
+           [10.460492, 51.120627],
+           [10.460969, 51.120139],
+           [10.460819, 51.120081],
+           [10.460348, 51.120577]
+         ]
+       ]
+     }
+   }
+ ]
+}
+'''
+
+converted_data = convert_to_feature_collection(json_data)
+print(converted_data)
+```
+This module defines a `convert_to_feature_collection` function that takes the JSON data as input and returns an object with the desired schema. It also includes a helper function `create_polygon`, which is used to create a `Polygon` geometry from the provided JSON structure.
+To use this module, you can call the `convert_to_feature_collection` function with your JSON data as the argument, like in the example above. The output will be an object that matches the specified schema.
+
+Please note that this implementation assumes that all input JSON files follow a specific format and are well-formed. If your actual JSON data might have variations or inconsistencies, you may need to adjust the code accordingly to handle those cases.
