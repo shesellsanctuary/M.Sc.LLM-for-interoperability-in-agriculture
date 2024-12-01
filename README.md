@@ -1,4 +1,4 @@
-# IST QAI4SE
+# Master Thesis 2024
 
 To run the demonstrator, the backend should be started through the `AdsPlatformApplication.java` file and the frontend through '''npm start''' in the frontend folder.
 
